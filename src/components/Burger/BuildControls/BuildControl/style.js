@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 
 export const Buttons = styled.Text`
-  display: block;
   padding: 5px;
   margin: 0 5px;
   width: 80px;
@@ -28,7 +27,7 @@ export const Label = styled.Text`
 export const BuildControlClasse = styled.View`
   display: flex;
   justify-content: space-between;
-  flex-direction: initial;
+  flex-direction: row;
   align-items: center;
   margin: 5px 0;
 `;

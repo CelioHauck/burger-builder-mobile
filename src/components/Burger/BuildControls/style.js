@@ -11,11 +11,10 @@ export const BuildControlsClasse = styled.View`
   padding: 10px 0;
 `;
 
-export const OrderButton = styled.Text`
+export const OrderButton = styled.TouchableHighlight`
   background-color: #dad735;
   border: 1px solid #966909;
   color: #966909;
-  font-family: inherit;
   font-size: 19.2px;
   padding: 15px 30px;
   box-shadow: 2px 2px 2px #966909;

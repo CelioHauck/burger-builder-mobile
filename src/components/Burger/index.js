@@ -1,6 +1,9 @@
 import React from "react";
 import Ingredient from "./Ingredient";
 import { Burger } from "./style.js";
+import { Text, View, Dimensions } from "react-native";
+
+const { height } = Dimensions.get("window");
 
 const burger = (props) => {
   let tranformedIngredients = Object.keys(props.ingredients)
@@ -15,9 +18,15 @@ const burger = (props) => {
 
   if (tranformedIngredients.length === 0) {
     tranformedIngredients = [
-      <p key="PleaseStart">Please start adding ingredients</p>,
+      <Text
+        key="PleaseStart"
+        style={{ textAlignVertical: "center", textAlign: "center" }}
+      >
+        Please start adding ingredients
+      </Text>,
     ];
   }
+
   return (
     <Burger>
       <Ingredient type="breadTop" />
