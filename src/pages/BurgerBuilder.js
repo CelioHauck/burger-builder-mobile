@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { View } from "react-native";
 import Burger from "../components/Burger";
 import BuildControls from "../components/Burger/BuildControls";
-// import OrderSummary from "../../components/Burger/OrderSummary";
-// import { IngredientModel } from "../../types/models/ingredient.model";
-// import Modal from "../../UI/Modal";
 
 
-//Ver isso em typescript
 const PRICES = {
     salad: 0.5,
     cheese: 0.4,

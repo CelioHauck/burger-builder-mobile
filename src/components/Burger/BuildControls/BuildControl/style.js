@@ -10,7 +10,7 @@ export const Buttons = styled.Text`
     cursor: pointer;
 `;
 
-export const Label = styled.View`
+export const Label = styled.Text`
     padding: 10px;
     font-weight: bold;
     width: 80px;
