@@ -1,17 +1,23 @@
 import React from "react";
 
-import { Text } from "react-native";
 import { BuildControlClasse, Label, Buttons } from "./style.js";
+
+const DEPARA_NAME = {
+  Salad: "Salada",
+  Bacon: "Bacon",
+  Meat: "Carne",
+  Cheese: "Queijo",
+};
 
 const BuildControl = (props) => {
   return (
     <BuildControlClasse>
-      <Label>{props.label}</Label>
+      <Label>{DEPARA_NAME[props.label]}</Label>
       <Buttons type="Less" disabled={props.disabled} onPress={props.remove}>
-        Less
+        Menos
       </Buttons>
       <Buttons type="More" disabled={false} onPress={props.added}>
-        More
+        Mais
       </Buttons>
     </BuildControlClasse>
   );

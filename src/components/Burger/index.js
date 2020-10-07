@@ -22,7 +22,7 @@ const burger = (props) => {
         key="PleaseStart"
         style={{ textAlignVertical: "center", textAlign: "center" }}
       >
-        Please start adding ingredients
+        Favor adicionar ingredients!!!
       </Text>,
     ];
   }
