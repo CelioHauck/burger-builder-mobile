@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Logo from "../components/Logo";
 import Form from "../components/Form";
-import Wallpaper from "../components/Wallpaper";
+import Background from "../components/Background";
 import Button from "../components/Button";
 
 const LoginScreen = ({ navigation }) => {
   return (
-    <Wallpaper>
+    <Background>
       <Logo />
       <Form />
       <Button
@@ -14,7 +14,7 @@ const LoginScreen = ({ navigation }) => {
           navigation.navigate("BurgerScreen");
         }}
       />
-    </Wallpaper>
+    </Background>
   );
 };
 

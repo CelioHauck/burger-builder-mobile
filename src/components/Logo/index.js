@@ -3,16 +3,16 @@ import { StyleSheet, View, Text, Image } from "react-native";
 
 import logoImg from "../../assets/image/logotipo-de-hamburguer-de-chama-de-fogo-picante-quente_8169-191.jpg";
 
-export default class Logo extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image source={logoImg} style={styles.image} />
-        <Text style={styles.text}>HAMBURGER PREMIUM</Text>
-      </View>
-    );
-  }
-}
+const Logo = () => {
+  return (
+    <View style={styles.container}>
+      <Image source={logoImg} style={styles.image} />
+      <Text style={styles.text}>HAMBURGER PREMIUM</Text>
+    </View>
+  );
+};
+
+export default Logo;
 
 const styles = StyleSheet.create({
   container: {

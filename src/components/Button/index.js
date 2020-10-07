@@ -7,26 +7,23 @@ import {
   Dimensions,
 } from "react-native";
 
-export default class Button extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <View style={styles.container}>
-        <View>
-          <TouchableOpacity
-            style={styles.button}
-            activeOpacity={1}
-            onPress={this.props.click}
-          >
-            <Text style={styles.text}>Login</Text>
-          </TouchableOpacity>
-        </View>
+const Button = (props) => {
+  return (
+    <View style={styles.container}>
+      <View>
+        <TouchableOpacity
+          style={styles.button}
+          activeOpacity={1}
+          onPress={props.click}
+        >
+          <Text style={styles.text}>Login</Text>
+        </TouchableOpacity>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
+
+export default Button;
 
 const DEVICE_WIDTH = Dimensions.get("window").width;
 
