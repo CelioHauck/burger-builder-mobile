@@ -1,5 +1,5 @@
 import React from "react";
-import Ingredient from "./ingredient";
+import Ingredient from "./Ingredient";
 import { Burger } from "./style.js";
 
 const burger = (props) => {

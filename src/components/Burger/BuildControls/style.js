@@ -13,11 +13,10 @@ export const BuildControlsClasse = styled.View`
 
 export const OrderButton = styled.Text`
   background-color: #dad735;
-  cursor: pointer;
   border: 1px solid #966909;
   color: #966909;
   font-family: inherit;
-  font-size: 1.2em;
+  font-size: 19.2px;
   padding: 15px 30px;
   box-shadow: 2px 2px 2px #966909;
 
@@ -25,7 +24,6 @@ export const OrderButton = styled.Text`
     disabled &&
     `
     background-color: #C7C6C6;
-    cursor: not-allowed;
     border: 1px solid #ccc;
     color: #888888;
   `}
