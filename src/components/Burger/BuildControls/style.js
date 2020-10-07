@@ -21,16 +21,11 @@ export const OrderButton = styled.Text`
     padding: 15px 30px;
     box-shadow: 2px 2px 2px #966909;
 
-
-&:disabled {
+    ${({ disabled }) => disabled && `
     background-color: #C7C6C6;
     cursor: not-allowed;
     border: 1px solid #ccc;
     color: #888888;
-}
-
-&:not(:disabled) {
-    animation: enable 0.3s linear;
-}
+  `}
 `;
 

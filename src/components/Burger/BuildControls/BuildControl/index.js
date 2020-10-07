@@ -8,8 +8,8 @@ const BuildControl = (props) =>{
     return (
         <BuildControlClasse>
             <Label>{props.label}</Label>
-            <Buttons className="Less" disabled={props.disabled} onClick={props.remove}>Less</Buttons>
-            <Buttons className="More" onClick={props.added}>More</Buttons>
+            <Buttons type="Less" disabled={props.disabled} onClick={props.remove}>Less</Buttons>
+            <Buttons type="More" disabled={false} onClick={props.added}>More</Buttons>
         </BuildControlClasse>
     );
 }

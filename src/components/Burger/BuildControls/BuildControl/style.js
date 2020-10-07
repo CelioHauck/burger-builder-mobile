@@ -8,6 +8,15 @@ export const Buttons = styled.Text`
     width: 80px;
     border: 1px solid #AA6817;
     cursor: pointer;
+    background-color: ${props => props.type == 'Less' ? '#D39952': '#8F5E1E'};
+    color: white;
+
+    ${({ disabled }) => disabled && `
+    background-color: #AC9980;
+    border: 1px solid #7E7365;
+    color: #ccc;
+    cursor: default;
+  `}
 `;
 
 export const Label = styled.Text`
@@ -23,27 +32,4 @@ export const BuildControlClasse = styled.View`
     flex-direction: initial;
     align-items: center;
     margin: 5px 0;
-
-    &:disabled ${Buttons}{
-        background-color: #AC9980;
-        border: 1px solid #7E7365;
-        color: #ccc;
-        cursor: default;
-    }
-
-    &:hover:disabled  ${Buttons} {
-        background-color: #AC9980;
-        color: #ccc;
-        cursor: not-allowed;
-      }
-
-    .Less {
-        background-color: #D39952;
-        color: white;
-    }
-
-    .More {
-        background-color: #8F5E1E;
-        color: white;
-      }
 `;
