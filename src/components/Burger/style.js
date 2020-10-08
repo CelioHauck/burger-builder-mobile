@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Burger = styled.View`
   width: 100%;
-  height: 100%;
+  height: 55%;
   margin: auto;
   overflow: visible;
   text-align: center;
