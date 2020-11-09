@@ -13,7 +13,9 @@ const controls = [
 const BuildControls = (props) => {
   return (
     <BuildControlsClasse>
-      <Text>Preço Atual: {props.price.toFixed(2)}</Text>
+      <Text style={{ fontWeight: "700" }}>
+        Preço Atual: {props.price.toFixed(2)}
+      </Text>
       {controls.map((ctrl) => (
         <BuildControl
           key={ctrl.label}
@@ -27,7 +29,7 @@ const BuildControls = (props) => {
           disabled={props.disabled[ctrl.type]}
         />
       ))}
-      <OrderButton disabled={!props.purchaseble}>
+      <OrderButton onPress={props.ordered} disabled={!props.purchaseble}>
         <Text>Peça agoraa!</Text>
       </OrderButton>
     </BuildControlsClasse>

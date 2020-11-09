@@ -21,7 +21,6 @@ export const Buttons = styled.Text`
 export const Label = styled.Text`
   padding: 10px;
   font-weight: bold;
-  width: 80px;
 `;
 
 export const BuildControlClasse = styled.View`
