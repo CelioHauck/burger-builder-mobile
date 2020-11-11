@@ -9,7 +9,6 @@ const LoginScreen = ({ navigation }) => {
   const [credential, setCredential] = useState({ userName: "", password: "" });
 
   const login = () => {
-    console.log(credential);
     firebase
       .auth()
       .signInWithEmailAndPassword(credential.userName, credential.password)

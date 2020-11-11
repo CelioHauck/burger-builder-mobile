@@ -15,8 +15,8 @@ export default function App() {
   const MyTabs = () => {
     return (
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={BurgerScreen} />
-        <Tab.Screen name="Settings" component={OrderListScreen} />
+        <Tab.Screen name="Cadastro" component={BurgerScreen} />
+        <Tab.Screen name="Listagem" component={OrderListScreen} />
       </Tab.Navigator>
     );
   };

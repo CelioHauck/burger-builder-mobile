@@ -5,48 +5,56 @@ import { ButtonType } from "../../../utils/enum/button.enum";
 import { Text, FlatList, View } from "react-native";
 
 const OrderSummary = (props) => {
-  return (
-    <React.Fragment>
-      {/* <View>Your Order</View> */}
-      <Text>O pedido contem os seguintes ingredientes</Text>
-      <FlatList
-        keyExtractor={(item, index) => {
-          return `${item}${index}`;
-        }}
-        style={{ marginTop: 16, marginBottom: 16 }}
-        data={Object.keys(props.ingredients)}
-        renderItem={(ig) => {
-          return (
-            <Text key={IngredientType[ig.item] + props.ingredients[ig.item]}>
-              <Text style={{ marginRight: 16 }}>{"\u2022"}</Text>
-              <Text style={{ textTransform: "capitalize" }}>
-                {IngredientType[ig.item]}
-              </Text>
-              : {props.ingredients[ig.item]}
-            </Text>
-          );
-        }}
-      />
-      <Text>
-        <Text style={{ fontWeight: "bold" }}>
-          Total Price: {props.totalPrice.toFixed(2)}
-        </Text>
-      </Text>
-      <Text>Continue to checkout?</Text>
-      {/* <Button clicked={props.cancel} type={ButtonType.danger}>
-        <Text> Cancel</Text>
-      </Button>
-      <Button clicked={props.continue} type={"Success"}>
-        <Text> Confirm</Text>
-      </Button> */}
+  const action = props.isAction ? (
+    <>
+      <Text>Deseja realmente realizar o seu pedido?</Text>
       <View style={{ flex: 1, flexDirection: "row" }}>
         <Button clicked={props.cancel} type={ButtonType.danger}>
-          Cancel
+          Cancelar
         </Button>
         <Button clicked={props.continue} type={ButtonType.success}>
-          Confirm
+          Confirmar
         </Button>
       </View>
+    </>
+  ) : (
+    <View style={{ flex: 1, flexDirection: "row" }}>
+      <Button clicked={props.cancel} type={ButtonType.danger}>
+        Fechar
+      </Button>
+    </View>
+  );
+  return (
+    <React.Fragment>
+      <Text>O pedido contem os seguintes ingredientes</Text>
+      {props.ingredients ? (
+        <FlatList
+          keyExtractor={(item, index) => {
+            return `${item}${index}`;
+          }}
+          style={{ marginTop: 16, marginBottom: 16 }}
+          data={Object.keys(props.ingredients)}
+          renderItem={(ig) => {
+            return (
+              <Text key={IngredientType[ig.item] + props.ingredients[ig.item]}>
+                <Text style={{ marginRight: 16 }}>{"\u2022"}</Text>
+                <Text style={{ textTransform: "capitalize" }}>
+                  {IngredientType[ig.item]}
+                </Text>
+                : {props.ingredients[ig.item]}
+              </Text>
+            );
+          }}
+        />
+      ) : null}
+
+      <Text>
+        <Text style={{ fontWeight: "bold" }}>
+          Preço Total: {props.totalPrice ? props.totalPrice.toFixed(2) : null}
+        </Text>
+      </Text>
+
+      {action}
     </React.Fragment>
   );
 };

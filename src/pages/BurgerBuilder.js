@@ -57,6 +57,7 @@ class BurgerBuilder extends Component {
     if (this.state.ingredients) {
       const order = {
         ingredients: this.state.ingredients,
+        dateOrder: new Date(),
         price: this.state.totalPrice,
         custormer: {
           name: "Célio",
@@ -128,6 +129,7 @@ class BurgerBuilder extends Component {
           cancel={this.closeHandler}
           continue={this.continueHandler}
           ingredients={this.state.ingredients}
+          isAction
         />
       );
     }

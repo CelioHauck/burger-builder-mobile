@@ -4,7 +4,6 @@ import { ModalStyled } from "./style";
 import Backdrop from "../Backdrop";
 
 const Modal = (props) => {
-  console.log(props);
   return (
     <React.Fragment>
       <Backdrop show={props.show} close={props.close} />
