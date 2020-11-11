@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import BurgerScreen from "./src/pages/BurgerBuilder";
-import OrderListScreen from "./src/pages/OrderListScreen";
+import OrderListScreen from "./src/pages/OrderListScreen.js";
 import LoginScreen from "./src/pages/LoginScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
