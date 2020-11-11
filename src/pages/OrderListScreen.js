@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+} from "react-native";
 import axios from "../infra/axios/order";
 import firebase from "../infra/firebase";
 import moment from "moment";
@@ -15,10 +22,11 @@ const orderListScreen = () => {
     moment.locale("pt-br");
     axios.get("/orders.json").then((response) => {
       if (response && response.data) {
-        const result = Object.keys(response.data).map((key) => {
-          return { id: key, ...response.data[key] };
-        });
-        // .filter((e) => e.custormer.email === userName.email);
+        const result = Object.keys(response.data)
+          .map((key) => {
+            return { id: key, ...response.data[key] };
+          })
+          .filter((e) => e.custormer.email === userName.email);
         console.log(result);
         setOrder(result);
       }
@@ -44,23 +52,24 @@ const orderListScreen = () => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
             return (
-              <View style={styles.item}>
-                <Text
-                  onPress={() => {
-                    setSelectOrder(item);
-                    setOpen(true);
-                  }}
-                  style={styles.text}
-                >{`${
-                  item.dateOrder
-                    ? `Data do Pedido: ${moment(item.dateOrder).format(
-                        "l"
-                      )} ${moment(item.dateOrder).format("LT")} - `
-                    : ""
-                } Total: R$  ${
-                  item.price ? item.price.toFixed(2) : null
-                }`}</Text>
-              </View>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  setSelectOrder(item);
+                  setOpen(true);
+                }}
+              >
+                <View style={styles.item}>
+                  <Text style={styles.text}>{`${
+                    item.dateOrder
+                      ? `Data do Pedido: ${moment(item.dateOrder).format(
+                          "l"
+                        )} ${moment(item.dateOrder).format("LT")} - `
+                      : ""
+                  } Total: R$  ${
+                    item.price ? item.price.toFixed(2) : null
+                  }`}</Text>
+                </View>
+              </TouchableWithoutFeedback>
             );
           }}
         />

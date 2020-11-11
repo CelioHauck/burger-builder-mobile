@@ -30,7 +30,7 @@ const BuildControls = (props) => {
         />
       ))}
       <OrderButton onPress={props.ordered} disabled={!props.purchaseble}>
-        <Text>Peça agoraa!</Text>
+        <Text>Peça agora!</Text>
       </OrderButton>
     </BuildControlsClasse>
   );
