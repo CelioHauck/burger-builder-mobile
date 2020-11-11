@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -8,50 +8,55 @@ import {
 
 import UserInput from "../Input";
 
-export default class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showPass: true,
-      press: false,
-    };
-    this.showPass = this.showPass.bind(this);
-  }
+const Form = (props) => {
+  const [control, setControl] = useState({
+    showPass: true,
+    press: false,
+  });
 
-  showPass() {
-    this.state.press === false
-      ? this.setState({ showPass: false, press: true })
-      : this.setState({ showPass: true, press: false });
-  }
+  const showPass = () => {
+    control.press === false
+      ? setControl({ showPass: false, press: true })
+      : setControl({ showPass: true, press: false });
+  };
 
-  render() {
-    return (
-      <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <UserInput
-          placeholder="Nome"
-          autoCapitalize={"none"}
-          returnKeyType={"done"}
-          autoCorrect={false}
-        />
-        <UserInput
-          secureTextEntry={this.state.showPass}
-          placeholder="Senha"
-          returnKeyType={"done"}
-          autoCapitalize={"none"}
-          autoCorrect={false}
-        />
-        <TouchableOpacity
-          activeOpacity={0.7}
-          style={styles.btnEye}
-          onPress={this.showPass}
-        >
-          <Image style={styles.iconEye} />
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
-    );
-  }
-}
-
+  return (
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+      <UserInput
+        value={props.userName}
+        placeholder="Nome"
+        autoCapitalize={"none"}
+        returnKeyType={"done"}
+        change={(e) => {
+          props.setCredential((old) => {
+            return { ...old, userName: e };
+          });
+        }}
+        autoCorrect={false}
+      />
+      <UserInput
+        value={props.password}
+        secureTextEntry={control.showPass}
+        placeholder="Senha"
+        returnKeyType={"done"}
+        change={(e) => {
+          props.setCredential((old) => {
+            return { ...old, password: e };
+          });
+        }}
+        autoCapitalize={"none"}
+        autoCorrect={false}
+      />
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.btnEye}
+        onPress={showPass}
+      >
+        <Image style={styles.iconEye} />
+      </TouchableOpacity>
+    </KeyboardAvoidingView>
+  );
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -69,3 +74,5 @@ const styles = StyleSheet.create({
     tintColor: "rgba(0,0,0,0.2)",
   },
 });
+
+export default Form;

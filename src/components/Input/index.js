@@ -7,6 +7,8 @@ const UserInput = (props) => {
     <View style={styles.inputWrapper}>
       <Image source={props.source} style={styles.inlineImg} />
       <TextInput
+        value={props.value}
+        onChangeText={props.change}
         style={styles.input}
         placeholder={props.placeholder}
         secureTextEntry={props.secureTextEntry}
