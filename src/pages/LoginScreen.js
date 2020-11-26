@@ -25,6 +25,13 @@ const LoginScreen = ({ navigation }) => {
     <Background>
       <Logo />
       <Form credential={credential} setCredential={setCredential} />
+      <View style={styles.container}>
+        <View>
+          <TouchableOpacity>
+            <Text>Não tem uma conta? Crie agora</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
       <Button click={login} />
     </Background>
   );

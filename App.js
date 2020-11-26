@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import BurgerScreen from "./src/pages/BurgerBuilder";
 import OrderListScreen from "./src/pages/OrderListScreen.js";
 import LoginScreen from "./src/pages/LoginScreen";
+import AccountScreen from "./src/pages/AccountScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Stack = createStackNavigator();
@@ -27,6 +28,11 @@ export default function App() {
         <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AccountScrren"
+          component={AccountScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
