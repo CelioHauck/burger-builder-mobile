@@ -30,11 +30,14 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "rgba(255, 255, 255, 0.4)",
     width: DEVICE_WIDTH - 30,
-    height: 40,
-    marginHorizontal: 20,
     paddingLeft: 45,
     borderRadius: 20,
     color: "#ffffff",
+    height: 20,
+    marginHorizontal: 10,
+    marginVertical: 5,
+    // paddingVertical: 5,
+    // paddingHorizontal: 15,
   },
   inputWrapper: {
     flex: 1,

@@ -4,6 +4,7 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   Image,
+  Text,
 } from "react-native";
 
 import UserInput from "../Input";
@@ -35,7 +36,7 @@ const AccountForm = ({
         placeholder="Email"
         autoCapitalize={"none"}
         returnKeyType={"done"}
-        change={handleChange}
+        change={handleChange("email")}
         autoCorrect={false}
       />
       {touched.email && errors.email && (
@@ -48,7 +49,7 @@ const AccountForm = ({
         secureTextEntry={control.showPass}
         placeholder="Senha"
         returnKeyType={"done"}
-        change={handleChange}
+        change={handleChange("password")}
         autoCapitalize={"none"}
         autoCorrect={false}
       />
@@ -69,7 +70,7 @@ const AccountForm = ({
         secureTextEntry={control.showPass}
         placeholder="Confirmar senha"
         returnKeyType={"done"}
-        change={handleChange}
+        change={handleChange("confirmPassword")}
         autoCapitalize={"none"}
         autoCorrect={false}
       />

@@ -17,9 +17,9 @@ const orderListScreen = () => {
   const [selectOrder, setSelectOrder] = useState({});
   const [open, setOpen] = useState(false);
   const userName = firebase.auth().currentUser;
+  moment.locale("pt-br");
 
   useEffect(() => {
-    moment.locale("pt-br");
     axios.get("/orders.json").then((response) => {
       if (response && response.data) {
         const result = Object.keys(response.data)

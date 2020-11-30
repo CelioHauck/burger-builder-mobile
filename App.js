@@ -31,7 +31,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="AccountScrren"
+          name="AccountScreen"
           component={AccountScreen}
           options={{ headerShown: false }}
         />
