@@ -40,7 +40,9 @@ const AccountForm = ({
         autoCorrect={false}
       />
       {touched.email && errors.email && (
-        <Text style={{ fontSize: 10, color: "red" }}>{errors.email}</Text>
+        <Text style={{ fontSize: 10, color: "red", paddingTop: 24 }}>
+          {errors.email}
+        </Text>
       )}
       <UserInput
         id="password"
@@ -54,7 +56,9 @@ const AccountForm = ({
         autoCorrect={false}
       />
       {touched.password && errors.password && (
-        <Text style={{ fontSize: 10, color: "red" }}>{errors.password}</Text>
+        <Text style={{ fontSize: 10, color: "red", paddingTop: 24 }}>
+          {errors.password}
+        </Text>
       )}
       <TouchableOpacity
         activeOpacity={0.7}
@@ -75,7 +79,7 @@ const AccountForm = ({
         autoCorrect={false}
       />
       {touched.confirmPassword && errors.confirmPassword && (
-        <Text style={{ fontSize: 10, color: "red" }}>
+        <Text style={{ fontSize: 10, color: "red", paddingTop: 24 }}>
           {errors.confirmPassword}
         </Text>
       )}
