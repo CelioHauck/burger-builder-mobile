@@ -11,6 +11,7 @@ import axios from "../infra/axios/order";
 import firebase from "../infra/firebase";
 import moment from "moment";
 import OrderSummary from "../components/Burger/OrderSummary";
+import Toast from "react-native-simple-toast";
 import Modal from "../ui/Modal";
 const orderListScreen = () => {
   const [order, setOrder] = useState([]);
@@ -27,11 +28,46 @@ const orderListScreen = () => {
             return { id: key, ...response.data[key] };
           })
           .filter((e) => e.custormer.email === userName.email);
-        console.log(result);
-        setOrder(result);
+        setOrder(result.reverse());
       }
     });
   }, []);
+
+  const getUser = () => {
+    axios.get("/orders.json").then((response) => {
+      if (response && response.data) {
+        const result = Object.keys(response.data)
+          .map((key) => {
+            return { id: key, ...response.data[key] };
+          })
+          .filter((e) => e.custormer.email === userName.email);
+        setOrder(result.reverse());
+      }
+    });
+  };
+
+  const continueHandler = () => {
+    const user = firebase.auth().currentUser;
+    if (selectOrder.ingredients) {
+      const order = {
+        ingredients: selectOrder.ingredients,
+        dateOrder: new Date(),
+        price: selectOrder.price,
+        custormer: {
+          email: user.email,
+        },
+      };
+
+      axios
+        .post("/orders.json", order)
+        .then(() => {
+          Toast.show("Pedido replicado com sucesso!");
+          getUser();
+          closeHandler();
+        })
+        .catch((error) => Toast.show(error));
+    }
+  };
 
   const closeHandler = () => {
     setOpen(false);
@@ -43,6 +79,7 @@ const orderListScreen = () => {
         <OrderSummary
           totalPrice={selectOrder.price}
           cancel={closeHandler}
+          continue={continueHandler}
           ingredients={selectOrder.ingredients}
         />
       </Modal>
