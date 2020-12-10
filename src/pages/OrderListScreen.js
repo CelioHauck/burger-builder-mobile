@@ -7,6 +7,7 @@ import {
   View,
   TouchableWithoutFeedback,
 } from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 import axios from "../infra/axios/order";
 import firebase from "../infra/firebase";
 import moment from "moment";
@@ -17,33 +18,42 @@ const orderListScreen = () => {
   const [order, setOrder] = useState([]);
   const [selectOrder, setSelectOrder] = useState({});
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const userName = firebase.auth().currentUser;
   moment.locale("pt-br");
 
   useEffect(() => {
-    axios.get("/orders.json").then((response) => {
-      if (response && response.data) {
-        const result = Object.keys(response.data)
-          .map((key) => {
-            return { id: key, ...response.data[key] };
-          })
-          .filter((e) => e.custormer.email === userName.email);
-        setOrder(result.reverse());
-      }
-    });
+    setLoading(true);
+    axios
+      .get("/orders.json")
+      .then((response) => {
+        if (response && response.data) {
+          const result = Object.keys(response.data)
+            .map((key) => {
+              return { id: key, ...response.data[key] };
+            })
+            .filter((e) => e.custormer.email === userName.email);
+          setOrder(result.reverse());
+        }
+      })
+      .finally((e) => setLoading(false));
   }, []);
 
   const getUser = () => {
-    axios.get("/orders.json").then((response) => {
-      if (response && response.data) {
-        const result = Object.keys(response.data)
-          .map((key) => {
-            return { id: key, ...response.data[key] };
-          })
-          .filter((e) => e.custormer.email === userName.email);
-        setOrder(result.reverse());
-      }
-    });
+    setLoading(true);
+    axios
+      .get("/orders.json")
+      .then((response) => {
+        if (response && response.data) {
+          const result = Object.keys(response.data)
+            .map((key) => {
+              return { id: key, ...response.data[key] };
+            })
+            .filter((e) => e.custormer.email === userName.email);
+          setOrder(result.reverse());
+        }
+      })
+      .finally((e) => setLoading(false));
   };
 
   const continueHandler = () => {
@@ -57,7 +67,7 @@ const orderListScreen = () => {
           email: user.email,
         },
       };
-
+      setLoading(true);
       axios
         .post("/orders.json", order)
         .then(() => {
@@ -65,7 +75,8 @@ const orderListScreen = () => {
           getUser();
           closeHandler();
         })
-        .catch((error) => Toast.show(error));
+        .catch((error) => Toast.show(error))
+        .finally((e) => setLoading(false));
     }
   };
 
@@ -85,7 +96,12 @@ const orderListScreen = () => {
   };
 
   return (
-    <>
+    <View>
+      <Spinner
+        visible={loading}
+        textContent={"Loading..."}
+        textStyle={styles.spinnerTextStyle}
+      />
       <Modal show={open} close={closeHandler}>
         <OrderSummary
           totalPrice={selectOrder.price}
@@ -124,7 +140,7 @@ const orderListScreen = () => {
           }}
         />
       </SafeAreaView>
-    </>
+    </View>
   );
 };
 const styles = StyleSheet.create({
@@ -164,5 +180,25 @@ const styles = StyleSheet.create({
   text: {
     color: "#333333",
   },
+  spinnerTextStyle: {
+    color: "#FFF",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+  },
+  instructions: {
+    textAlign: "center",
+    color: "#333333",
+    marginBottom: 5,
+  },
 });
+
 export default orderListScreen;
