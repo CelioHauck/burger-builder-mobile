@@ -14,8 +14,9 @@ const validations = Yup.object().shape({
     .email("Email inválido.")
     .required("O campo e-mail é obrigatorio"),
   password: Yup.string().required("O campo senha é obrigatorio"),
-  confirmPassword: Yup.string().required(
-    "A campo confirma senha é obrigatorio"
+  confirmPassword: Yup.string().oneOf(
+    [Yup.ref("password"), null],
+    "As senhas devem corresponder"
   ),
 });
 

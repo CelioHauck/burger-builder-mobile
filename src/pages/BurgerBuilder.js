@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 import axios from "../infra/axios/order";
 import Toast from "react-native-simple-toast";
 import Burger from "../components/Burger";
@@ -25,6 +26,7 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 0,
     purchasable: false,
+    loading: false,
   };
   state = { ...this.initialState };
 
@@ -134,14 +136,40 @@ class BurgerBuilder extends Component {
     }
 
     return (
-      <React.Fragment>
+      <View style={styles.container}>
+        <Spinner
+          visible={this.state.loading}
+          textContent={"Loading..."}
+          textStyle={styles.spinnerTextStyle}
+        />
         <Modal show={this.state.purchasing} close={this.closeHandler}>
           {orderSummary}
         </Modal>
         {burger}
-      </React.Fragment>
+      </View>
     );
   }
 }
 
+const styles = StyleSheet.create({
+  spinnerTextStyle: {
+    color: "#FFF",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+  },
+  instructions: {
+    textAlign: "center",
+    color: "#333333",
+    marginBottom: 5,
+  },
+});
 export default BurgerBuilder;
