@@ -22,6 +22,9 @@ const OrderSummary = (props) => {
       <Button clicked={props.cancel} type={ButtonType.danger}>
         Fechar
       </Button>
+      <Button clicked={props.continue} type={ButtonType.success}>
+        Recomprar
+      </Button>
     </View>
   );
   return (

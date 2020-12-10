@@ -14,9 +14,8 @@ const Background = (props) => {
 const styles = StyleSheet.create({
   picture: {
     flex: 1,
-    width: null,
-    height: null,
-    resizeMode: "cover",
+    justifyContent: "center",
+    padding: 30,
   },
 });
 

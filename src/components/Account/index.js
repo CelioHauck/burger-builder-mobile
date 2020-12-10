@@ -4,6 +4,7 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   Image,
+  Text,
 } from "react-native";
 
 import UserInput from "../Input";
@@ -35,11 +36,13 @@ const AccountForm = ({
         placeholder="Email"
         autoCapitalize={"none"}
         returnKeyType={"done"}
-        change={handleChange}
+        change={handleChange("email")}
         autoCorrect={false}
       />
       {touched.email && errors.email && (
-        <Text style={{ fontSize: 10, color: "red" }}>{errors.email}</Text>
+        <Text style={{ fontSize: 10, color: "red", paddingTop: 24 }}>
+          {errors.email}
+        </Text>
       )}
       <UserInput
         id="password"
@@ -48,12 +51,14 @@ const AccountForm = ({
         secureTextEntry={control.showPass}
         placeholder="Senha"
         returnKeyType={"done"}
-        change={handleChange}
+        change={handleChange("password")}
         autoCapitalize={"none"}
         autoCorrect={false}
       />
       {touched.password && errors.password && (
-        <Text style={{ fontSize: 10, color: "red" }}>{errors.password}</Text>
+        <Text style={{ fontSize: 10, color: "red", paddingTop: 24 }}>
+          {errors.password}
+        </Text>
       )}
       <TouchableOpacity
         activeOpacity={0.7}
@@ -69,12 +74,12 @@ const AccountForm = ({
         secureTextEntry={control.showPass}
         placeholder="Confirmar senha"
         returnKeyType={"done"}
-        change={handleChange}
+        change={handleChange("confirmPassword")}
         autoCapitalize={"none"}
         autoCorrect={false}
       />
       {touched.confirmPassword && errors.confirmPassword && (
-        <Text style={{ fontSize: 10, color: "red" }}>
+        <Text style={{ fontSize: 10, color: "red", paddingTop: 24 }}>
           {errors.confirmPassword}
         </Text>
       )}

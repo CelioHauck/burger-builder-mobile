@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { View } from "react-native";
 import axios from "../infra/axios/order";
+import Toast from "react-native-simple-toast";
 import Burger from "../components/Burger";
 import BuildControls from "../components/Burger/BuildControls";
 import OrderSummary from "../components/Burger/OrderSummary";
 import Modal from "../ui/Modal";
-import Toast from "react-native-simple-toast";
 import firebase from "../infra/firebase";
 
 const PRICES = {
@@ -64,15 +64,8 @@ class BurgerBuilder extends Component {
         dateOrder: new Date(),
         price: this.state.totalPrice,
         custormer: {
-          name: "Célio",
-          address: {
-            street: "Rua testinho de noronha",
-            zipCode: "33335554",
-            country: "Brasil",
-          },
           email: user.email,
         },
-        deliveryMethod: "IFood",
       };
 
       axios
